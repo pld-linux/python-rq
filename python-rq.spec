@@ -59,10 +59,17 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with python2}
 %py_install
 %py_postclean
+
+for a in rq rqinfo rqworker; do
+	mv $RPM_BUILD_ROOT%{_bindir}/$a $RPM_BUILD_ROOT%{_bindir}/$a-2
+done
 %endif
 
 %if %{with python3}
 %py3_install
+for a in rq rqinfo rqworker; do
+	mv $RPM_BUILD_ROOT%{_bindir}/$a $RPM_BUILD_ROOT%{_bindir}/$a-3
+done
 %endif
 
 %clean
@@ -72,6 +79,9 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc README.md LICENSE
+%attr(755,root,root) %{_bindir}/rq-2
+%attr(755,root,root) %{_bindir}/rqinfo-2
+%attr(755,root,root) %{_bindir}/rqworker-2
 %{py_sitescriptdir}/%{module}
 %{py_sitescriptdir}/%{module}-%{version}-py*.egg-info
 %endif
@@ -80,6 +90,9 @@ rm -rf $RPM_BUILD_ROOT
 %files -n python3-%{module}
 %defattr(644,root,root,755)
 %doc README.md LICENSE
+%attr(755,root,root) %{_bindir}/rq-3
+%attr(755,root,root) %{_bindir}/rqinfo-3
+%attr(755,root,root) %{_bindir}/rqworker-3
 %{py3_sitescriptdir}/%{module}
 %{py3_sitescriptdir}/%{module}-%{version}-py*.egg-info
 %endif
