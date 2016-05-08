@@ -19,10 +19,18 @@ BuildRequires:	rpmbuild(macros) >= 1.714
 %if %{with python2}
 BuildRequires:	python-modules
 BuildRequires:	python-setuptools
+%if %{with tests}
+BuildRequires:	python-click >= 3.0
+BuildRequires:	python-redis >= 2.7.0
+%endif
 %endif
 %if %{with python3}
 BuildRequires:	python3-modules
 BuildRequires:	python3-setuptools
+%if %{with tests}
+BuildRequires:	python3-click >= 3.0
+BuildRequires:	python3-redis >= 2.7.0
+%endif
 %endif
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
