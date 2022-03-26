@@ -8,7 +8,7 @@
 Summary:	RQ is a simple, lightweight, library for creating background jobs, and processing them
 Name:		python-%{module}
 Version:	0.5.6
-Release:	7
+Release:	8
 License:	BSD
 Group:		Libraries/Python
 Source0:	https://pypi.python.org/packages/c4/7f/a26b981b99ecc56b28f3de27e9f7dc2d5f16dd2f833e80c01b24bdeb9a5c/%{module}-%{version}.tar.gz
